@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom'
 import css from './registerpage.module.css'
 import { useState } from 'react'
+import { registerUser } from '../apis/userApi'
 
 export const RegisterPage = () => {
   const [username, setUserName] = useState('')
@@ -8,6 +10,9 @@ export const RegisterPage = () => {
   const [errUsername, setErrUserName] = useState('')
   const [errPassword, setErrPassword] = useState('')
   const [errPasswordOk, setErrPasswordOk] = useState('')
+
+  const [registerState, setRegisterState] = useState('')
+  const navigate = useNavigate()
 
   const validateUsername = value => {
     if (!value) {
@@ -37,6 +42,8 @@ export const RegisterPage = () => {
     }
     if (value != current) {
       setErrPasswordOk('비밀번호가 일치하지 않습니다')
+    } else {
+      setErrPasswordOk('')
     }
   }
 
@@ -58,7 +65,27 @@ export const RegisterPage = () => {
 
   const register = async e => {
     e.preventDefault()
-    console.log('register')
+    console.log('register', username, password, passwordOk)
+    validateUsername(username)
+    validatePassword(password)
+    validatePasswordOk(passwordOk, password)
+
+    if (errUsername || errPassword || errPasswordOk || !username || !password || !passwordOk) {
+      return
+    }
+
+    try {
+      setRegisterState('등록중')
+      const response = await registerUser({ username, password })
+      console.log('회원가입 성공', response.data)
+      setRegisterState('등록 완료')
+      navigate('/login')
+    } catch (err) {
+      setRegisterState('회원가입 실패')
+      if (err.response) {
+        console.log('회원가입 실패', err.response.data)
+      }
+    }
   }
 
   return (
