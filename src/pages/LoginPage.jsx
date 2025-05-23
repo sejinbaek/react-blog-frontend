@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import css from './registerpage.module.css'
 import logincss from './loginpage.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../apis/userApi'
 import { setUserInfo } from '../store/userSlice'
@@ -118,6 +118,12 @@ export const LoginPage = () => {
         <strong>{errPassword}</strong>
         <button type="submit">로그인</button>
       </form>
+      <p className={css.loginLink}>
+        계정이 없으신가요?
+        <Link to="/register" className={css.linkButton}>
+          회원가입
+        </Link>
+      </p>
     </main>
   )
 }
