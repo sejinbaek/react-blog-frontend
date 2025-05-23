@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import css from './registerpage.module.css'
 import { useState } from 'react'
 import { registerUser } from '../apis/userApi'
@@ -115,6 +115,12 @@ export const RegisterPage = () => {
         <strong>{errPasswordOk}</strong>
         <button type="submit">가입하기</button>
       </form>
+      <p className={css.loginLink}>
+        이미 계정이 있으신가요?
+        <Link to="/login" className={css.linkButton}>
+          로그인
+        </Link>
+      </p>
     </main>
   )
 }
