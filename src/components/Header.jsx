@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import css from './header.module.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import { getUserProfile, logoutUser } from '../apis/userApi'
 
 export const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false)
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
@@ -37,6 +38,7 @@ export const Header = () => {
       await logoutUser()
       dispatch(setUserInfo(''))
       setIsMenuActive(false)
+      navigate('/login')
     } catch (err) {
       console.log('프로필 조회 실패:', err)
       dispatch(setUserInfo(''))
