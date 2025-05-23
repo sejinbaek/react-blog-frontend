@@ -3,6 +3,7 @@ import { DefaultLayout } from '../common/DefaultLayout'
 import { RegisterPage } from '../pages/RegisterPage'
 import { LoginPage } from '../pages/LoginPage'
 import { CreatePost } from '../pages/CreatePost'
+import { FullScreenLayout } from '../common/FullScreenLayout'
 
 export const router = createBrowserRouter([
   {
@@ -15,17 +16,33 @@ export const router = createBrowserRouter([
         element: <div>블로그 리스트</div>,
       },
       {
-        path: '/register',
-        element: <RegisterPage />,
-      },
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
-      {
         path: '/createPost',
         element: <CreatePost />,
       },
     ],
+  },
+  {
+    path: '/register',
+    element: (
+      <FullScreenLayout>
+        <RegisterPage />
+      </FullScreenLayout>
+    ),
+  },
+  {
+    path: '/login',
+    element: (
+      <FullScreenLayout>
+        <LoginPage />
+      </FullScreenLayout>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <FullScreenLayout>
+        <div>페이지를 찾을 수 없습니다</div>
+      </FullScreenLayout>
+    ),
   },
 ])
