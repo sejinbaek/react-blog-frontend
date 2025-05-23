@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import css from './registerpage.module.css'
+import logincss from './loginpage.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../apis/userApi'
@@ -88,18 +89,32 @@ export const LoginPage = () => {
   }, [redirect, navigate])
 
   return (
-    <main className={css.loginpage}>
-      <h2>로그인 페이지</h2>
-      {loginStatus && <strong>{loginStatus}</strong>}
+    <main className={logincss.loginpage}>
+      <h2 className={css.title}>로그인</h2>
+      {loginStatus && <strong>로그인 성공</strong>}
       <form className={css.container} onSubmit={login}>
-        <input value={username} onChange={handleUsernameChange} type="text" placeholder="아이디" />
+        <fieldset className={logincss.fieldGroup}>
+          <input
+            type="text"
+            placeholder=" "
+            value={username}
+            onChange={handleUsernameChange}
+            required
+            id="username"
+          />
+          <legend htmlFor="username">사용자명</legend>
+        </fieldset>
         <strong>{errUsername}</strong>
-        <input
-          value={password}
-          onChange={handlePasswordChange}
-          type="password"
-          placeholder="패스워드"
-        />
+        <fieldset className={logincss.fieldGroup}>
+          <input
+            type="password"
+            placeholder=""
+            value={password}
+            onChange={handlePasswordChange}
+            id="password"
+          />
+          <legend htmlFor="password">비밀번호</legend>
+        </fieldset>
         <strong>{errPassword}</strong>
         <button type="submit">로그인</button>
       </form>
