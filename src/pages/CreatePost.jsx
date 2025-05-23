@@ -4,6 +4,8 @@ import QuillEditor from '../components/QuillEditor'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import { createPost } from '../apis/postApi'
+
 export const CreatePost = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
@@ -27,8 +29,6 @@ export const CreatePost = () => {
 
   const handleCreatePost = async e => {
     e.preventDefault()
-    console.log('제출')
-    console.log(files)
 
     setIsSubmitting(true)
     setError('')
@@ -50,6 +50,7 @@ export const CreatePost = () => {
     }
 
     try {
+      await createPost(data)
       console.log('등록 성공')
       setIsSubmitting(true)
       navigate('/')
