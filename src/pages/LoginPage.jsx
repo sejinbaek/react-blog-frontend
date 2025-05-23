@@ -1,11 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import css from './registerpage.module.css'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../apis/userApi'
+import { setUserInfo } from '../store/userSlice'
 
 export const LoginPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errUsername, setErrUsername] = useState('')
   const [errPassword, setErrPassword] = useState('')
+
+  const [loginStatus, setLoginStatus] = useState('') // 로그인 상태 여부
+  const [redirect, setRedirect] = useState(false) // 로그인 상태 메시지
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const validateUsername = value => {
     if (!value) {
@@ -39,13 +49,48 @@ export const LoginPage = () => {
     setPassword(value)
     validatePassword(value)
   }
+
   const login = async e => {
     e.preventDefault()
-    console.log('로그인')
+    setLoginStatus('')
+    validateUsername(username)
+    validatePassword(password)
+    if (errPassword || errUsername || !username || !password) {
+      setLoginStatus('아이디와 비밀번호를 확인하세요')
+      return
+    }
+
+    try {
+      const userData = await loginUser({ username, password })
+
+      if (userData) {
+        setLoginStatus('로그인 성공')
+        dispatch(setUserInfo(userData))
+
+        setTimeout(() => {
+          setRedirect(true)
+        }, 500)
+      } else {
+        setLoginStatus('사용자가 없습니다')
+      }
+    } catch (err) {
+      console.error('로그인 오류---', err)
+      return
+    } finally {
+      setLoginStatus(false)
+    }
   }
+
+  useEffect(() => {
+    if (redirect) {
+      navigate('/')
+    }
+  }, [redirect, navigate])
+
   return (
     <main className={css.loginpage}>
       <h2>로그인 페이지</h2>
+      {loginStatus && <strong>{loginStatus}</strong>}
       <form className={css.container} onSubmit={login}>
         <input value={username} onChange={handleUsernameChange} type="text" placeholder="아이디" />
         <strong>{errUsername}</strong>

@@ -11,3 +11,13 @@ export const loginUser = async credentials => {
   const response = await axios.post(`${API_URL}/login`, credentials)
   return response.data
 }
+
+export const getUserProfile = async () => {
+  const response = await axios.get(`${API_URL}/profile`, { withCredentials: true })
+  return response.data
+}
+
+export const logoutUser = async credentials => {
+  const response = await axios.post(`${API_URL}/logout`, credentials)
+  return response.data
+}
