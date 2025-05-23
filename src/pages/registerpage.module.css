@@ -8,7 +8,7 @@
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.registerpage h2 {
+.title {
   font-size: clamp(18px, 5vw, 24px);
   text-align: center;
 }
@@ -27,27 +27,30 @@
   border-radius: 0.5em;
   outline: none;
   border: 1px solid gray;
-  font-size: clamp(12px, 4vw, 16px);
+  font-size: clamp(12px, 3vw, 16px);
 }
 
 .container strong {
   color: red;
   font-weight: normal;
-  font-size: 0.9em;
-  padding: 0.5em 0.25em;
+  font-size: clamp(10px, 3vw, 14px);
+  line-height: 1.5;
+  padding: 0.1em 0.5em 1em;
 }
 
 .container button {
   width: 100%;
+  margin-bottom: 30px;
   padding: clamp(0.75em, 2vw, 1.25em) clamp(1em, 3vw, 1.5em);
   background-color: black;
   color: white;
   border-radius: 0.5em;
+  font-size: clamp(12px, 3vw, 16px);
   align-self: center; /* 버튼만 중앙 정렬 */
 }
 
 .loginLink {
-  margin: 30px 0px;
+  margin-bottom: 30px;
   font-size: clamp(12px, 4vw, 16px);
   text-align: center;
 }
