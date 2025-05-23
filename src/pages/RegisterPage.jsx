@@ -90,25 +90,25 @@ export const RegisterPage = () => {
 
   return (
     <main className={css.registerpage}>
-      <h2>회원가입 페이지</h2>
+      <h2>회원가입</h2>
       <form className={css.container} onSubmit={register}>
         <input
           type="text"
-          placeholder="사용자명"
+          placeholder="사용자명을 입력해주세요"
           value={username}
           onChange={handleUserNameChange}
         />
         <strong>{errUsername}</strong>
         <input
           type="password"
-          placeholder="패스워드"
+          placeholder="패스워드를 입력해주세요"
           value={password}
           onChange={handlePasswordChange}
         />
         <strong>{errPassword}</strong>
         <input
           type="password"
-          placeholder="패스워드 확인"
+          placeholder="패스워드를 재입력해주세요"
           value={passwordOk}
           onChange={handlePasswordOkChange}
         />
