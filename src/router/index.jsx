@@ -4,6 +4,7 @@ import { RegisterPage } from '../pages/RegisterPage'
 import { LoginPage } from '../pages/LoginPage'
 import { CreatePost } from '../pages/CreatePost'
 import { FullScreenLayout } from '../common/FullScreenLayout'
+import PostListPage from '../pages/PostListPage'
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>블로그 리스트</div>,
+        element: <PostListPage />,
       },
       {
         path: '/createPost',
