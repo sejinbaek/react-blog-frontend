@@ -2,14 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #eaeaea;
+  background-color: black;
   padding: 0.5rem;
   position: relative;
 }
 
+.header h1 {
+  color: white;
+}
+
 .hamburger {
   position: absolute;
-  top: 1rem;
+  top: 0.7rem;
   right: 1rem;
   background-color: #999;
   width: 2rem;
