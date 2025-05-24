@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom'
 import css from './postcard.module.css'
+import { formatDate } from '../utils/features'
 
-import cardImg from '../assets/karigurashi050.jpg'
-
-const PostCard = () => {
+const PostCard = ({ post }) => {
+  console.log(post)
   return (
     <article className={css.postcard}>
       <div className={css.post_img}>
-        <img src={cardImg} alt="" />
+        <img src={`${import.meta.env.VITE_BACK_URL}/${post.cover}`} alt={post.title} />
       </div>
-      <h3 className={css.title}>포스트 제목</h3>
+      <h3 className={css.title}>{post.title}</h3>
       <div classname={css.info}>
         <p>
           <Link to={`/mypage`} className={css.author}>
-            sejin
+            {post.author}
           </Link>
-          <time className={css.date}>2025.05.05</time>
+          <time className={css.date}>{formatDate(post.createdAt)}</time>
         </p>
         <p>
           <span>❤️</span>
@@ -24,13 +24,7 @@ const PostCard = () => {
           <span>30</span>
         </p>
       </div>
-      <p className={css.dec}>
-        요약 내용이 들어갑니다. 내용이 길 ~~~ 수 있어요. 요약 내용이 들어갑니다. 내용이 길 ~~~ 수
-        있어요. 요약 내용이 들어갑니다. 내용이 길 ~~~ 수 있어요. 요약 내용이 들어갑니다. 내용이 길
-        ~~~ 수 있어요. 요약 내용이 들어갑니다. 내용이 길 ~~~ 수 있어요 요약 내용이 들어갑니다.요약
-        내용이 들어갑니다.요약 내용이 들어갑니다.요약 내용이 들어갑니다.요약 내용이 들어갑니다.요약
-        내용이 들어갑니다.요약 내용이 들어갑니다.요약 내용이 들어갑니다.요약 내용이 들어갑니다.
-      </p>
+      <p className={css.dec}>{post.summary}</p>
     </article>
   )
 }
