@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import css from './registerpage.module.css'
 import { useState } from 'react'
 import { registerUser } from '../apis/userApi'
+import { useToast } from '../hooks/useToast.js'
 
 export const RegisterPage = () => {
   const [username, setUserName] = useState('')
@@ -13,6 +14,7 @@ export const RegisterPage = () => {
 
   const [registerState, setRegisterState] = useState('')
   const navigate = useNavigate()
+  const { showSuccessToast, showErrorToast } = useToast()
 
   const validateUsername = value => {
     if (!value) {
@@ -78,9 +80,12 @@ export const RegisterPage = () => {
       setRegisterState('등록중')
       const response = await registerUser({ username, password })
       console.log('회원가입 성공', response.data)
+
+      showSuccessToast('👏 회원가입 성공!')
       setRegisterState('등록 완료')
       navigate('/login')
     } catch (err) {
+      showErrorToast('회원가입 실패😢')
       setRegisterState('회원가입 실패')
       if (err.response) {
         console.log('회원가입 실패', err.response.data)
