@@ -5,7 +5,7 @@ import { getPostList } from '../apis/postApi'
 
 import mainImage from '../assets/karigurashi022.jpg'
 
-const PostListPage = () => {
+export const PostListPage = () => {
   const [postList, setPostList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -73,5 +73,3 @@ const PostListPage = () => {
     </main>
   )
 }
-
-export default PostListPage
