@@ -61,7 +61,7 @@ const PostCard = ({ post }) => {
             </span>
             <span>{likesCount}</span>
           </div>
-          <div className={css.decWrapper}>
+          <div className={css.commentWrapper}>
             <span>💬</span>
             <span>30</span>
           </div>
