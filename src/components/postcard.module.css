@@ -87,18 +87,8 @@
   gap: 0.75rem;
 }
 
-.heartWrapper {
+.commentWrapper {
   display: flex;
   gap: 0.25rem;
   align-items: center;
-}
-
-.heart {
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 0.2;
-}
-
-.heart.liked {
-  color: red;
 }
