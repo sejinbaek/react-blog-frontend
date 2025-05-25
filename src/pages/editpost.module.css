@@ -1,0 +1,79 @@
+.editpost {
+  padding: 0 1rem;
+}
+
+.editpost h2 {
+  padding: 2rem;
+}
+
+.writecon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.writecon > input {
+  padding: 1rem;
+}
+
+.writecon > * {
+  width: 100%;
+}
+
+.writecon > textarea {
+  height: 300px;
+}
+
+.writecon > button {
+  padding: 1rem;
+  width: 200px;
+}
+
+.writecon > p {
+  font-size: 0.75rem;
+  color: red;
+  text-align: right;
+  width: 100%;
+}
+
+.writecon .previewImg {
+  text-align: left;
+}
+
+.writecon .previewImg img {
+  width: 100px;
+}
+
+.editorWrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.writecon button[type='submit'] {
+  margin-bottom: 4rem;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.writecon button[type='submit']:hover {
+  background-color: blue;
+}
+
+.writecon button[type='submit']:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 0.5em;
+  margin-bottom: 20px;
+}
