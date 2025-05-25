@@ -38,7 +38,7 @@ export const Header = () => {
       await logoutUser()
       dispatch(setUserInfo(''))
       setIsMenuActive(false)
-      navigate('/login')
+      navigate('/')
     } catch (err) {
       console.log('프로필 조회 실패:', err)
       dispatch(setUserInfo(''))
