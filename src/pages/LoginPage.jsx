@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux'
 import { loginUser } from '../apis/userApi'
 import { setUserInfo } from '../store/userSlice'
 
+import { useToast } from '../hooks/useToast.js'
+
 export const LoginPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -17,6 +19,7 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { showSuccessToast, showErrorToast } = useToast()
 
   const validateUsername = value => {
     if (!value) {
@@ -67,15 +70,18 @@ export const LoginPage = () => {
       if (userData) {
         setLoginStatus('로그인 성공')
         dispatch(setUserInfo(userData))
+        showSuccessToast('SEHADANG에 오신 것을 환영합니다!')
 
         setTimeout(() => {
           setRedirect(true)
-        }, 500)
+        }, 2000)
       } else {
+        showErrorToast('사용자가 존재하지 않습니다.')
         setLoginStatus('사용자가 없습니다')
       }
     } catch (err) {
       console.error('로그인 오류---', err)
+      showErrorToast('로그인에 실패하였습니다.')
       return
     } finally {
       setLoginStatus(false)

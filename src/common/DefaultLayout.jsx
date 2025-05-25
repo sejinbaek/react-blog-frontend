@@ -3,6 +3,9 @@ import { Header } from '../components/Header'
 import './index.css'
 import css from './defaultlayout.module.css'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 export const DefaultLayout = () => {
   const location = useLocation()
   const hideHeaderRoutes = ['/register', '/login']
@@ -12,6 +15,7 @@ export const DefaultLayout = () => {
     <div className={css.defaultlayout}>
       {!shouldHideHeader && <Header />}
       <Outlet />
+      <ToastContainer limit={1} />
     </div>
   )
 }
