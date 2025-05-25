@@ -50,10 +50,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: (
-      <FullScreenLayout>
-        <div>페이지를 찾을 수 없습니다</div>
-      </FullScreenLayout>
-    ),
+    element: <div>페이지를 찾을 수 없습니다</div>,
   },
 ])
