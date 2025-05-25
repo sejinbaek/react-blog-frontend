@@ -53,7 +53,7 @@ export const PostDetailPage = () => {
         <div className={css.info}>
           <p className={css.author}>{postInfo?.author}</p>
           <p className={css.date}>{formatDate(postInfo?.updatedAt)}</p>
-          <p>{postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}</p>
+          <div>{postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}</div>
         </div>
         <div className={css.summary}>{postInfo?.summary}</div>
         {/* Quill 에디터로 작성된 HTML 콘텐츠를 렌더링 */}
