@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
         <img src={`${import.meta.env.VITE_BACK_URL}/${post.cover}`} alt={post.title} />
       </div>
       <h3 className={css.title}>{post.title}</h3>
-      <div classname={css.info}>
+      <div className={css.info}>
         <p>
           <Link to={`/mypage`} className={css.author} onClick={e => e.stopPropagation()}>
             {post.author}
