@@ -92,3 +92,13 @@
   gap: 0.25rem;
   align-items: center;
 }
+
+.commentContent {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.commentIcon {
+  font-size: 16px;
+}

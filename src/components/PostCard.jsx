@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
-import css from './postcard.module.css'
-import { formatDate } from '../utils/features'
+import { AiOutlineMessage } from 'react-icons/ai'
 
+import { formatDate } from '../utils/features'
+import css from './postcard.module.css'
 import LikeButton from './LikeButton'
 
 const PostCard = ({ post }) => {
@@ -30,8 +31,9 @@ const PostCard = ({ post }) => {
         <div className={css.Wrapper}>
           <LikeButton postId={post._id} likes={post.likes} />
           <div className={css.commentWrapper}>
-            <span>💬</span>
-            <span>30</span>
+            <span className={css.commentContent}>
+              <AiOutlineMessage className={css.commentIcon} /> {post.commentCount || 0}
+            </span>
           </div>
         </div>
       </div>
