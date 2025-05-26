@@ -4,5 +4,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../assets/karigurashi022.jpg') no-repeat center center / cover;
+  background: url('/karigurashi022.jpg') no-repeat center center / cover;
 }
