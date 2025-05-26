@@ -7,7 +7,7 @@ import { getComments, createComment, deleteComment, updateComment } from '../api
 import { formatDate } from '../utils/features.js'
 import { useToast } from '../hooks/useToast.js'
 
-export default function Comments({ postId }) {
+export default function Comments({ postId, onCommentCountChange }) {
   const userInfo = useSelector(state => state.user.user)
   const [newComment, setNewComment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -20,11 +20,16 @@ export default function Comments({ postId }) {
     try {
       const response = await getComments(postId)
       setComments(response)
+
+      // 댓글 수를 부모 컴포넌트에 전달
+      if (onCommentCountChange) {
+        onCommentCountChange(response.length)
+      }
     } catch (error) {
       console.error('댓글 목록 조회 실패:', error)
       showErrorToast('댓글 목록 조회에 실패했습니다.')
     }
-  }, [postId])
+  }, [postId, onCommentCountChange])
 
   // postId가 바뀔 때마다 댓글 목록 가져오기
   useEffect(() => {
@@ -50,10 +55,16 @@ export default function Comments({ postId }) {
       }
 
       const response = await createComment(commentData)
+      const updatedComments = [response, ...comments]
 
       // 새 댓글 추가하고 입력창 초기화
-      setComments(prevComments => [response, ...prevComments])
+      setComments(updatedComments)
       setNewComment('')
+
+      // 댓글이 추가되면 댓글 수 업데이트
+      if (onCommentCountChange) {
+        onCommentCountChange(updatedComments.length)
+      }
     } catch (error) {
       console.error('댓글 등록 실패:', error)
       showErrorToast('댓글 등록에 실패했습니다.')
@@ -69,9 +80,14 @@ export default function Comments({ postId }) {
       setIsLoading(true)
       // 댓글 삭제 API 호출
       await deleteComment(commentId)
-
+      const updatedComments = comments.filter(comment => comment._id !== commentId)
       // 댓글 목록에서 삭제된 댓글 제거
-      setComments(prevComments => prevComments.filter(comment => comment._id !== commentId))
+      setComments(updatedComments)
+
+      // 댓글이 삭제되면 댓글 수 업데이트
+      if (onCommentCountChange) {
+        onCommentCountChange(updatedComments.length)
+      }
     } catch (error) {
       console.error('댓글 삭제 실패:', error)
       showErrorToast('댓글 삭제에 실패했습니다.')
@@ -178,7 +194,11 @@ export default function Comments({ postId }) {
         </form>
       ) : (
         <p className={css.logMessage}>
-          댓글을 작성하려면 <Link to="/login">로그인이 필요합니다.</Link>
+          댓글을 작성하려면{' '}
+          <Link to="/login" className={css.goLogin}>
+            로그인
+          </Link>
+          이 필요합니다.
         </p>
       )}
 
