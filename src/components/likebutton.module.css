@@ -1,7 +1,8 @@
 .heartWrapper {
   display: flex;
-  gap: 0.25rem;
   align-items: center;
+  gap: 0.25rem;
+  margin-right: 0.5rem;
 }
 
 .heart {
