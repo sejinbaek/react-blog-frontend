@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import css from './comments.module.css'
 import { getComments, createComment } from '../apis/commentApi.js'
+import { formatDate } from '../utils/features.js'
 import { useToast } from '../hooks/useToast.js'
 
 export default function Comments({ postId }) {
@@ -85,7 +86,7 @@ export default function Comments({ postId }) {
           <li key={comment._id} className={css.list}>
             <div className={css.comment}>
               <p className={css.author}>{comment.author}</p>
-              <p className={css.date}>{comment.createdAt}</p>
+              <p className={css.date}>{formatDate(comment.createdAt)}</p>
               <p className={css.text}>{comment.content}</p>
             </div>
             <div className={css.btns}>
