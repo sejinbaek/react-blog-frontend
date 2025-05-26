@@ -63,3 +63,7 @@
   background-color: #eaeaea;
   margin: 1rem 0;
 }
+
+.goLogin {
+  text-decoration: underline;
+}
