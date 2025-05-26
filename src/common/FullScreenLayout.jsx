@@ -1,4 +1,4 @@
-import css from '../common/Fullscreenlayout.module.css'
+import css from '../common/FullScreenLayout.module.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
