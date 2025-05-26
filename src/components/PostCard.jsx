@@ -21,19 +21,17 @@ const PostCard = ({ post }) => {
         <img src={`${import.meta.env.VITE_BACK_URL}/${post.cover}`} alt={post.title} />
       </div>
       <h3 className={css.title}>{post.title}</h3>
-      <div className={css.info}>
+      <div className={css.infoWrapper}>
         <div>
           <Link to={`/mypage/${post.author}`} className={css.author} onClick={handleAuthorClick}>
             {post.author}
           </Link>
-          <time className={css.date}>{formatDate(post.createdAt)}</time>
         </div>
-        <div className={css.Wrapper}>
-          <LikeButton postId={post._id} likes={post.likes} />
-          <div className={css.commentWrapper}>
-            <span className={css.commentContent}>
-              <AiOutlineMessage className={css.commentIcon} /> {post.commentCount || 0}
-            </span>
+        <div className={css.info}>
+          <time className={css.date}>{formatDate(post.createdAt)}</time>
+          <div className={css.btnsWrapper}>
+            <LikeButton postId={post._id} likes={post.likes} />
+            <AiOutlineMessage className={css.commentIcon} /> {post.commentCount || 0}
           </div>
         </div>
       </div>
