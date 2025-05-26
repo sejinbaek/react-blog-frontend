@@ -15,7 +15,7 @@ export const getComments = async postId => {
 }
 
 // 댓글 삭제 API
-export const deleteComments = async commentId => {
+export const deleteComment = async commentId => {
   const response = await axios.delete(`${API_URL}/comments/${commentId}`)
   return response.data
 }

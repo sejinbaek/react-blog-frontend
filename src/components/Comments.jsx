@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import css from './comments.module.css'
-import { getComments, createComment } from '../apis/commentApi.js'
+import { getComments, createComment, deleteComment } from '../apis/commentApi.js'
 import { formatDate } from '../utils/features.js'
 import { useToast } from '../hooks/useToast.js'
 
@@ -62,6 +62,24 @@ export default function Comments({ postId }) {
     }
   }
 
+  const handleDelete = async commentId => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      try {
+        setIsLoading(true)
+        // 댓글 삭제 API 호출
+        const response = await deleteComment(commentId)
+        console.log('댓글 삭제 성공:', response)
+        // 댓글 목록에서 삭제된 댓글 제거
+        setComments(prevComments => prevComments.filter(comment => comment._id !== commentId))
+        setIsLoading(false)
+      } catch (error) {
+        console.error('댓글 삭제 실패:', error)
+        showErrorToast('댓글 삭제에 실패했습니다.')
+        setIsLoading(false)
+      }
+    }
+  }
+
   return (
     <section className={css.comments}>
       {userInfo.username ? (
@@ -93,7 +111,7 @@ export default function Comments({ postId }) {
               </div>
               <div className={css.btns}>
                 <button>수정</button>
-                <button>삭제</button>
+                <button onClick={() => handleDelete(comment._id)}>삭제</button>
               </div>
             </li>
           ))
