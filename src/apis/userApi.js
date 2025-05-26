@@ -26,3 +26,13 @@ export const logoutUser = async () => {
   const response = await axios.post(`${API_URL}/auth/logout`)
   return response.data
 }
+
+export const deleteAccount = async () => {
+  try {
+    const response = await axios.delete(`${API_URL}/auth/delete-account`)
+    return response.data
+  } catch (error) {
+    console.error('회원 탈퇴에 실패했습니다', error)
+    throw error
+  }
+}
