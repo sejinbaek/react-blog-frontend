@@ -1,6 +1,6 @@
 import css from './comments.module.css'
 
-export const Comments = () => {
+export default function Comments() {
   return (
     <section className={css.comments}>
       <p className={css.logMessage}>댓글을 작성하려면 로그인이 필요합니다.</p>
@@ -11,7 +11,7 @@ export const Comments = () => {
       </form>
       <ul>
         <li className={css.list}>
-          <div className={css.commnet}>
+          <div className={css.comment}>
             <p className={css.author}>username</p>
             <p className={css.date}>2025-05-05</p>
             <p className={css.text}>

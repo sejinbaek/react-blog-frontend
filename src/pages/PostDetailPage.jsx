@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react'
-import css from './postdetailpage.module.css'
-
 import { Link, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { AiOutlineMessage } from 'react-icons/ai'
 
 import { getPostDetail, deletePost } from '../apis/postApi'
 import { formatDate } from '../utils/features'
-import { useSelector } from 'react-redux'
+
+import css from './postdetailpage.module.css'
 import LikeButton from '../components/LikeButton'
+import Comments from '../components/Comments'
 
 export const PostDetailPage = () => {
+  const username = useSelector(state => state.user.user.username)
   const { postId } = useParams()
-  console.log(postId) // postId는 URL 파라미터로 전달된 값
   // postId를 이용하여 서버에 요청하여 상세 정보를 가져옴
 
-  const username = useSelector(state => state.user.user.username)
-
   const [postInfo, setPostInfo] = useState()
+  const [commentCount, setCommentCount] = useState(0)
 
   useEffect(() => {
     const fetchPostDetail = async () => {
@@ -23,12 +24,18 @@ export const PostDetailPage = () => {
         const data = await getPostDetail(postId)
         console.log(data)
         setPostInfo(data)
+        // 초기 댓글 수 설정
+        setCommentCount(data.commentCount || 0)
       } catch (error) {
         console.error('상세정보 조회 실패:', error)
       }
     }
     fetchPostDetail()
   }, [postId])
+
+  const updateCommentCount = count => {
+    setCommentCount(count)
+  }
 
   const handleDeletePost = async () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
@@ -53,7 +60,12 @@ export const PostDetailPage = () => {
         <div className={css.info}>
           <p className={css.author}>{postInfo?.author}</p>
           <p className={css.date}>{formatDate(postInfo?.updatedAt)}</p>
-          <div>{postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}</div>
+          <div className={css.likeCommentWrapper}>
+            {postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}
+            <span className={css.commentContent}>
+              <AiOutlineMessage className={css.commentIcon} /> {commentCount}
+            </span>
+          </div>
         </div>
         <div className={css.summary}>{postInfo?.summary}</div>
         {/* Quill 에디터로 작성된 HTML 콘텐츠를 렌더링 */}
@@ -72,7 +84,12 @@ export const PostDetailPage = () => {
         )}
         <Link to="/">목록으로</Link>
       </section>
-      <section className={css.commentlist}>댓글목록</section>
+      {/* 업데이트된 Comments 컴포넌트에 commentCount와 updateCommentCount 함수 전달 */}
+      <Comments
+        postId={postId}
+        commentCount={commentCount}
+        onCommentCountChange={updateCommentCount}
+      />
     </main>
   )
 }
