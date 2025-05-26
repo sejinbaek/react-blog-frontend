@@ -12,10 +12,12 @@ export const DefaultLayout = () => {
 
   const shouldHideHeader = hideHeaderRoutes.includes(location.pathname)
   return (
-    <div className={css.defaultlayout}>
-      {!shouldHideHeader && <Header />}
-      <Outlet />
-      <ToastContainer limit={1} />
-    </div>
+    <>
+      {!shouldHideHeader && <Header />}{' '}
+      <div className={css.defaultlayout}>
+        <Outlet />
+        <ToastContainer limit={1} />
+      </div>
+    </>
   )
 }
