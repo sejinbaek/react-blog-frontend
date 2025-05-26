@@ -7,6 +7,7 @@ import { FullScreenLayout } from '../common/FullScreenLayout'
 import { PostListPage } from '../pages/PostListPage'
 import { PostDetailPage } from '../pages/PostDetailPage'
 import { EditPost } from '../pages/EditPost'
+import { UserPage } from '../pages/UserPage'
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: '/edit/:postId',
         element: <EditPost />,
+      },
+      {
+        path: '/user/:username',
+        element: <UserPage />,
       },
     ],
   },
