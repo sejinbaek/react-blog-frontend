@@ -10,4 +10,9 @@ export default defineConfig({
       '@': path.resolve('./src'),
     },
   },
+  server: {
+    proxy: {
+      '/uploads': 'http://localhost:3000',
+    },
+  },
 })
