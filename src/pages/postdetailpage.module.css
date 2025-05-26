@@ -97,3 +97,18 @@
   background-color: black;
   color: white;
 }
+
+.likeCommentWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.commentContent {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.commentIcon {
+  font-size: 16px;
+}
