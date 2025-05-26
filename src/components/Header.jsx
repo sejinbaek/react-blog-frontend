@@ -83,11 +83,7 @@ export const Header = () => {
           {username ? (
             <>
               <MenuLike to="/createPost" label="글쓰기" closeMenu={closeMenu} />
-              <MenuLike
-                to={`/users/${username}`}
-                label={`마이페이지(${username})`}
-                closeMenu={closeMenu}
-              />
+              <MenuLike to={`/users/${username}`} label="마이페이지" closeMenu={closeMenu} />
               <button onClick={handleLogout}>로그아웃</button>
             </>
           ) : (
