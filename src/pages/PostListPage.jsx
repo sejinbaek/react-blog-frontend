@@ -3,7 +3,7 @@ import css from './postlistpage.module.css'
 import PostCard from '../components/PostCard'
 import { getPostList } from '../apis/postApi'
 
-import mainImage from '../assets/karigurashi022.jpg'
+import mainImage from '../assets/karigurashi021.jpg'
 
 export const PostListPage = () => {
   const [postList, setPostList] = useState([])
@@ -54,7 +54,7 @@ export const PostListPage = () => {
   return (
     <main className={css.postlistpage}>
       <div className={css.postlist_img}>
-        <img src={mainImage} alt="" />
+        <img src={mainImage} alt="메인이미지" />
       </div>
       {error && <p className={css.errorMessage}>{error}</p>}
       {isLoading ? (
