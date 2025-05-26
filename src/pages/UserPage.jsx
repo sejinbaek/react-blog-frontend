@@ -1,10 +1,13 @@
-import { useParams, Link } from 'react-router-dom'
-import css from './userpage.module.css'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
+import css from './userpage.module.css'
 import { getUserComments, getUserInfo, getUserLikes, getUserPosts } from '../apis/userInfoApi'
+import { deleteAccount } from '../apis/userApi'
+import { setUserInfo } from '../store/userSlice'
 import { formatDate } from '../utils/features'
+import { useToast } from '../hooks/useToast'
 
 export const UserPage = () => {
   const { username } = useParams()
@@ -14,10 +17,15 @@ export const UserPage = () => {
   const [userLikes, setUserLikes] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   // 현재 로그인한 사용자 정보
   const currentUser = useSelector(state => state.user.user)
   const isCurrentUser = currentUser && currentUser.username === username
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { showSuccessToast, showErrorToast } = useToast()
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,6 +52,28 @@ export const UserPage = () => {
     fetchUserData()
   }, [username])
 
+  // 회원 탈퇴 처리 핸들러
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      '정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없으며, 모든 계정 정보가 삭제됩니다.'
+    )
+
+    if (!confirmed) return
+
+    try {
+      setIsDeleting(true)
+      await deleteAccount()
+
+      dispatch(setUserInfo('')) // redux 상태 초기화
+      showSuccessToast('회원 탈퇴가 완료되었습니다')
+      navigate('/', { replace: true })
+    } catch (error) {
+      console.error('회원 탈퇴 실패:', error)
+      showErrorToast('회원 탈퇴에 실패했습니다. 다시 시도해주세요')
+      setIsDeleting(false)
+    }
+  }
+
   if (isLoading) return <div>로딩 중...</div>
   if (error) return <div>{error}</div>
   if (!userData) return <div>사용자를 찾을 수 없습니다.</div>
@@ -63,6 +93,13 @@ export const UserPage = () => {
           {isCurrentUser && (
             <div className={css.editButton}>
               <Link to={`/update-profile`}>내 정보 수정</Link>
+              <button
+                onClick={handleDeleteAccount}
+                className={css.deleteButton}
+                disabled={isDeleting}
+              >
+                {isDeleting ? '처리 중...' : '회원 탈퇴'}
+              </button>
             </div>
           )}
         </div>
