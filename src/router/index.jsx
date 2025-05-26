@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
         element: <EditPost />,
       },
       {
-        path: '/user/:username',
+        path: '/users/:username',
         element: <UserPage />,
       },
     ],

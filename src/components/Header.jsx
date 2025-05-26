@@ -12,7 +12,7 @@ export const Header = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   const username = user?.username
-  console.log(username)
+
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export const Header = () => {
             <>
               <MenuLike to="/createPost" label="글쓰기" closeMenu={closeMenu} />
               <MenuLike
-                to="/user/:username"
+                to={`/users/${username}`}
                 label={`마이페이지(${username})`}
                 closeMenu={closeMenu}
               />
