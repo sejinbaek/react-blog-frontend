@@ -62,7 +62,7 @@ export const UserPage = () => {
           </p>
           {isCurrentUser && (
             <div className={css.editButton}>
-              <Link to={``}>내 정보 수정</Link>
+              <Link to={`/update-profile`}>내 정보 수정</Link>
             </div>
           )}
         </div>
@@ -94,7 +94,7 @@ export const UserPage = () => {
               <li key={comment._id} className={css.commentCard}>
                 <p className={css.commentContent}>{comment.content}</p>
                 <div className={css.commentMeta}>
-                  <Link to={`/detail/${comment.postId}`}>원문 보기</Link>
+                  <Link to={`/post/${comment.postId}`}>원문 보기</Link>
                   <p>작성일:{formatDate(comment.createdAt)}</p>
                 </div>
               </li>

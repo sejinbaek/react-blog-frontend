@@ -49,7 +49,7 @@ export const getUserLikes = async username => {
 // 특정 사용자 정보 수정
 export const updateUserInfo = async userData => {
   try {
-    const response = await axios.put(`${API_URL}/user/update`, userData)
+    const response = await axios.put(`${API_URL}/users/update`, userData)
     return response.data
   } catch (error) {
     console.log('사용자 정보 수정 실패', error)
