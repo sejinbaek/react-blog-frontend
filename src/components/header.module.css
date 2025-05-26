@@ -61,8 +61,8 @@
 }
 
 .hamburger.active + .gnbCon {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   pointer-events: auto;
 }
 
@@ -74,6 +74,7 @@
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
+  font-size: 1rem;
   color: #333;
 }
 
@@ -81,6 +82,12 @@
   background-color: #aaaaaa;
   border-radius: 30px;
   color: white;
+}
+
+.gnb button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {
@@ -118,11 +125,8 @@
   }
 
   .gnb button {
-    background: transparent;
-    border: none;
     color: white;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
     cursor: pointer;
   }
 }
