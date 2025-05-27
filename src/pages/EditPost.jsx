@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import QuillEditor from '../components/QuillEditor'
 import css from './editpost.module.css'
+import style from './createpost.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getPostDetail, updatePost } from '../apis/postApi'
@@ -111,34 +112,27 @@ export const EditPost = () => {
 
   return (
     <main>
-      <h2 className={css.editpost}>글 수정하기</h2>
       {error && <div className={css.errorMessage}>{error}</div>}
       <form className={css.writecon} onSubmit={handleSubmit}>
-        <label htmlFor="title">제목</label>
         <input
           type="text"
           id="title"
           name="title"
+          placeholder="제목"
           value={title}
           onChange={e => setTitle(e.target.value)}
-          placeholder="제목을 입력해주세요"
           required
+          className={style.title}
         />
-
-        <label htmlFor="summary">요약내용</label>
         <input
           type="text"
           id="summary"
           name="summary"
+          placeholder="요약내용을 입력해주세요"
           value={summary}
           onChange={e => setSummary(e.target.value)}
-          placeholder="요약 내용을 입력해주세요"
-          required
+          className={style.summary}
         />
-
-        <label htmlFor="files" hidden>
-          파일첨부
-        </label>
         <input
           type="file"
           id="files"
@@ -149,12 +143,10 @@ export const EditPost = () => {
 
         {currentImage && (
           <>
-            <label>현재 이미지:</label>
+            <p className={css.imageNote}>*새 이미지를 업로드하면 기존 이미지는 대체됩니다</p>
             <img src={currentImage} alt="현재 이미지" className={css.previewImage} />
-            <p className={css.imageNote}>새 이미지를 업로드하면 기존 이미지는 대체됩니다</p>
           </>
         )}
-        <label htmlFor="content">내용</label>
         <div className={css.editorWrapper}>
           <QuillEditor
             value={content}
@@ -163,7 +155,7 @@ export const EditPost = () => {
           />
         </div>
 
-        <button type="submit" disabled={isSubmitting} className={css.submitButton}>
+        <button type="submit" disabled={isSubmitting} className={style.submitBtn}>
           {isSubmitting ? '수정 중...' : '수정하기'}
         </button>
       </form>
