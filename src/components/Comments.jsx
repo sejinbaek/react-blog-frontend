@@ -143,7 +143,6 @@ export default function Comments({ postId, onCommentCountChange }) {
       <li key={comment._id} className={css.list}>
         <div className={css.comment}>
           <p className={css.author}>{comment.author}</p>
-          <p className={css.date}>{formatDate(comment.createdAt)}</p>
 
           {isEditing ? (
             <textarea
@@ -153,7 +152,10 @@ export default function Comments({ postId, onCommentCountChange }) {
               disabled={isLoading}
             />
           ) : (
-            <p className={css.text}>{comment.content}</p>
+            <>
+              <p className={css.date}>{formatDate(comment.createdAt)}</p>
+              <p className={css.text}>{comment.content}</p>
+            </>
           )}
         </div>
 
@@ -180,7 +182,19 @@ export default function Comments({ postId, onCommentCountChange }) {
 
   return (
     <section className={css.comments}>
-      {userInfo.username ? (
+      {/* 로그인하지 않은 경우 안내 문구만 */}
+      {!userInfo?.username && (
+        <p className={css.logMessage}>
+          댓글을 작성하려면{' '}
+          <Link to="/login" className={css.goLogin}>
+            로그인
+          </Link>
+          이 필요합니다.
+        </p>
+      )}
+
+      {/* 로그인한 경우에만 댓글 입력 폼 보여줌 */}
+      {userInfo?.username && (
         <form onSubmit={handleSubmit}>
           <textarea
             value={newComment}
@@ -192,18 +206,11 @@ export default function Comments({ postId, onCommentCountChange }) {
             {isLoading ? '등록 중...' : '댓글 등록'}
           </button>
         </form>
-      ) : (
-        <p className={css.logMessage}>
-          댓글을 작성하려면{' '}
-          <Link to="/login" className={css.goLogin}>
-            로그인
-          </Link>
-          이 필요합니다.
-        </p>
       )}
 
-      <ul>
-        {comments.length > 0 ? (
+      {/* 댓글 목록은 항상 보여줌 */}
+      <ul className={css.commentsList}>
+        {Array.isArray(comments) && comments.length > 0 ? (
           comments.map(renderCommentItem)
         ) : (
           <li className={css.list}>

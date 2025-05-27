@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 7rem;
+  padding: 10rem;
   position: relative;
   background-color: #eaeaea;
 }
@@ -33,69 +33,23 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 0;
   font-size: 0.7rem;
 }
 
 .author {
-  color: dodgerblue;
-  font-weight: bold;
-  padding: 0.25rem 1rem 0.25rem 0;
+  color: black;
+  padding: 0.25rem 0.5rem 0.25rem 0;
   cursor: pointer;
 }
 
 .author:hover {
-  color: rgb(1, 75, 148);
+  font-weight: bold;
 }
 
 .date {
   color: #999;
-  margin-left: 0.5rem;
   flex: 1;
-}
-
-.summary {
-  background-color: #eaeaea;
-  padding: 1rem;
-  border-radius: 1rem;
-  font-style: italic;
-}
-
-.desc {
-  padding: 1rem;
-}
-
-.content {
-  padding: 1rem;
-}
-
-.commentlist {
-  padding: 1rem;
-}
-
-.btns {
-  padding: 1rem 0;
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  border-top: 1px dotted #e3e3e3;
-  border-bottom: 1px dotted #e3e3e3;
-}
-
-.btns a,
-.btns span {
-  background-color: lightgray;
-  font-size: 0.75rem;
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btns a:hover,
-.btns span:hover {
-  background-color: black;
-  color: white;
 }
 
 .likeCommentWrapper {
@@ -112,4 +66,36 @@
 
 .commentIcon {
   font-size: 16px;
+}
+
+.summary {
+  background-color: rgb(255, 233, 233);
+  padding: 1rem;
+  font-style: italic;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.btns {
+  padding: 0.5rem 0;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: flex-end;
+  border-top: 1px dotted #e3e3e3;
+  border-bottom: 1px dotted #e3e3e3;
+}
+
+.btns a,
+.btns span {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btns a:hover,
+.btns span:hover {
+  font-weight: bold;
 }

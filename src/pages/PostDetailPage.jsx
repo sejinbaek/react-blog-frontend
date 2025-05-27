@@ -58,7 +58,7 @@ export const PostDetailPage = () => {
           <h3>{postInfo?.title}</h3>
         </div>
         <div className={css.info}>
-          <p className={css.author}>{postInfo?.author}</p>
+          <span className={css.author}>{postInfo?.author}</span>
           <p className={css.date}>{formatDate(postInfo?.updatedAt)}</p>
           <div className={css.likeCommentWrapper}>
             {postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}
