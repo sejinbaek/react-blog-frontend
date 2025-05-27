@@ -17,10 +17,15 @@
   background-color: #eaeaea;
 }
 
-.list {
-  padding: 0.5rem 0;
+.commentsList .list {
+  padding: 0.5rem;
   font-size: 0.75rem;
   color: lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.commentsList li:last-child {
+  border-bottom: none;
 }
 
 .comment {
@@ -52,6 +57,7 @@ textarea:focus {
 .text {
   width: 100%;
   padding-top: 0.5rem;
+  color: gray;
 }
 
 .btns {
@@ -59,7 +65,6 @@ textarea:focus {
   justify-content: flex-end;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid lightgray;
 }
 .btns button {
   cursor: pointer;
