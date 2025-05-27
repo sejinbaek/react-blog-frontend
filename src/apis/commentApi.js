@@ -1,6 +1,6 @@
 import axios from 'axios'
 axios.defaults.withCredentials = true
-const API_URL = import.meta.env.VITE_BACK_URL
+const API_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3000'
 
 // 댓글 등록 API
 export const createComment = async commentData => {
