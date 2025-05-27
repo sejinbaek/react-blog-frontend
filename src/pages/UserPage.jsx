@@ -9,6 +9,8 @@ import { setUserInfo } from '../store/userSlice'
 import { formatDate } from '../utils/features'
 import { useToast } from '../hooks/useToast'
 
+import NoImage from '../assets/NoImage.png'
+
 export const UserPage = () => {
   const { username } = useParams()
   const [userData, setUserData] = useState(null)
@@ -80,19 +82,19 @@ export const UserPage = () => {
 
   return (
     <main className={css.userpage}>
-      <h2>{username}님의 페이지</h2>
+      <h1>마이페이지</h1>
       <section>
-        <h3>사용자정보</h3>
         <div className={css.userInfo}>
-          <p>
-            <strong>사용자 이름: </strong> {userData.username}
-          </p>
-          <p>
-            <strong>가입일:</strong> {formatDate(userData.createdAt)}
-          </p>
+          <h2>
+            <span>반가워요</span>
+            <br />
+            {username}님!
+          </h2>
           {isCurrentUser && (
-            <div className={css.editButton}>
-              <Link to={`/update-profile`}>내 정보 수정</Link>
+            <div className={css.ButtonArea}>
+              <button className={css.editButton}>
+                <Link to={`/update-profile`}>내 정보 수정</Link>
+              </button>
               <button
                 onClick={handleDeleteAccount}
                 className={css.deleteButton}
@@ -106,7 +108,7 @@ export const UserPage = () => {
       </section>
 
       <section>
-        <h3>작성한 글({userPosts.length})</h3>
+        <h3>내 게시물 ({userPosts.length})</h3>
         {userPosts.length > 0 ? (
           <ul className={css.postList}>
             {userPosts.map(post => (
@@ -124,7 +126,7 @@ export const UserPage = () => {
       </section>
 
       <section>
-        <h3>작성한 댓글 ({userComments.length})</h3>
+        <h3>내 댓글 ({userComments.length})</h3>
         {userComments.length > 0 ? (
           <ul className={css.commentList}>
             {userComments.map(comment => (
@@ -143,7 +145,7 @@ export const UserPage = () => {
       </section>
 
       <section>
-        <h3>좋아요 클릭한 글 ({userLikes.length})</h3>
+        <h3>좋아요 누른 게시물 ({userLikes.length})</h3>
         {userLikes.length > 0 ? (
           <ul className={css.likeList}>
             {userLikes.map(post => (
@@ -152,7 +154,7 @@ export const UserPage = () => {
                   {post.cover ? (
                     <img src={`${import.meta.env.VITE_BACK_URL}/${post.cover}`} alt={post.title} />
                   ) : (
-                    <img src="https://picsum.photos/200/300" alt="기본 이미지" />
+                    <img src={NoImage} alt="기본 이미지" />
                   )}
                 </Link>
               </li>
