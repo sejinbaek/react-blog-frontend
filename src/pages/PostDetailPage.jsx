@@ -10,6 +10,8 @@ import css from './postdetailpage.module.css'
 import LikeButton from '../components/LikeButton'
 import Comments from '../components/Comments'
 
+import defaultImage from '../assets/NoImage.png'
+
 export const PostDetailPage = () => {
   const username = useSelector(state => state.user.user.username)
   const { postId } = useParams()
@@ -54,7 +56,12 @@ export const PostDetailPage = () => {
     <main className={css.postdetailpage}>
       <section>
         <div className={css.detailimg}>
-          <img src={`${import.meta.env.VITE_BACK_URL}/${postInfo?.cover}`} alt="" />
+          <img
+            src={
+              postInfo?.cover ? `${import.meta.env.VITE_BACK_URL}/${postInfo?.cover}` : defaultImage
+            }
+            alt="포스트이미지"
+          />
           <h3>{postInfo?.title}</h3>
         </div>
         <div className={css.info}>

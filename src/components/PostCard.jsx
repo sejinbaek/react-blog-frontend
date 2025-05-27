@@ -5,6 +5,8 @@ import { formatDate } from '../utils/features'
 import css from './postcard.module.css'
 import LikeButton from './LikeButton'
 
+import defaultImage from '../assets/NoImage.png'
+
 const PostCard = ({ post }) => {
   const navigate = useNavigate()
 
@@ -18,7 +20,10 @@ const PostCard = ({ post }) => {
   return (
     <article className={css.postcard} onClick={goDetail}>
       <div className={css.post_img}>
-        <img src={`${import.meta.env.VITE_BACK_URL}/${post.cover}`} alt={post.title} />
+        <img
+          src={post.cover ? `${import.meta.env.VITE_BACK_URL}/${post.cover}` : defaultImage}
+          alt={post.title}
+        />
       </div>
       <h3 className={css.title}>{post.title}</h3>
       <div className={css.infoWrapper}>
