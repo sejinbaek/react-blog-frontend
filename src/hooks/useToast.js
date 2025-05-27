@@ -2,7 +2,10 @@ import { toast } from 'react-toastify'
 import { Bounce } from 'react-toastify'
 
 export const useToast = () => {
+  const isMobile = window.innerWidth < 768
+
   const showSuccessToast = (message, options = {}) => {
+    if (isMobile) return
     toast(message, {
       position: 'top-center',
       autoClose: 1500,
@@ -14,6 +17,7 @@ export const useToast = () => {
     })
   }
   const showErrorToast = (message, options = {}) => {
+    if (isMobile) return
     toast.error(message, {
       position: 'top-center',
       autoClose: 2000,
@@ -27,6 +31,7 @@ export const useToast = () => {
     })
   }
   const showDefaultToast = (message, options = {}) => {
+    if (isMobile) return
     toast(message, {
       position: 'bottom-right',
       autoClose: 1500,
@@ -42,6 +47,7 @@ export const useToast = () => {
   }
 
   const showWarnToast = (message, options = {}) => {
+    if (isMobile) return
     toast.error(message, {
       position: 'bottom-right',
       autoClose: 2000,
