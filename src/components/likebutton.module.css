@@ -7,8 +7,11 @@
 
 .heart {
   cursor: pointer;
-  font-size: 18px;
   line-height: 0.2;
+}
+
+.heartIcon {
+  font-size: 16px;
 }
 
 .heart.liked {

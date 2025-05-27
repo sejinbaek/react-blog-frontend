@@ -62,17 +62,11 @@ export const PostDetailPage = () => {
             }
             alt="포스트이미지"
           />
-          <h3>{postInfo?.title}</h3>
         </div>
+        <h3 className={css.title}>{postInfo?.title}</h3>
         <div className={css.info}>
           <span className={css.author}>{postInfo?.author}</span>
           <p className={css.date}>{formatDate(postInfo?.updatedAt)}</p>
-          <div className={css.likeCommentWrapper}>
-            {postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}
-            <span className={css.commentContent}>
-              <AiOutlineMessage className={css.commentIcon} /> {commentCount}
-            </span>
-          </div>
         </div>
         <div className={css.summary}>{postInfo?.summary}</div>
         {/* Quill 에디터로 작성된 HTML 콘텐츠를 렌더링 */}
@@ -82,14 +76,22 @@ export const PostDetailPage = () => {
         ></div>
       </section>
       <section className={css.btns}>
-        {/* 로그인한 사용자만 글 수정, 삭제 가능 */}
-        {username === postInfo?.author && (
-          <>
-            <Link to={`/edit/${postId}`}>수정</Link>
-            <span onClick={handleDeletePost}>삭제</span>
-          </>
-        )}
-        <Link to="/">목록으로</Link>
+        <div className={css.likeCommentWrapper}>
+          {postInfo && <LikeButton postId={postId} likes={postInfo.likes} />}
+          <span className={css.commentContent}>
+            <AiOutlineMessage className={css.commentIcon} /> {commentCount}
+          </span>
+        </div>
+        <div className={css.btnsWrapper}>
+          {/* 로그인한 사용자만 글 수정, 삭제 가능 */}
+          {username === postInfo?.author && (
+            <>
+              <Link to={`/edit/${postId}`}>수정</Link>
+              <span onClick={handleDeletePost}>삭제</span>
+            </>
+          )}
+          <Link to="/">목록으로</Link>
+        </div>
       </section>
       {/* 업데이트된 Comments 컴포넌트에 commentCount와 updateCommentCount 함수 전달 */}
       <Comments

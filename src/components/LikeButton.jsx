@@ -54,7 +54,11 @@ export default function LikeButton({ postId, likes }) {
   return (
     <div className={css.heartWrapper}>
       <span onClick={handleLikeToggle} className={`${css.heart} ${isLiked ? css.liked : ''}`}>
-        {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
+        {isLiked ? (
+          <AiFillHeart className={css.heartIcon} />
+        ) : (
+          <AiOutlineHeart className={css.heartIcon} />
+        )}
       </span>
       <span>{likesCount}</span>
     </div>

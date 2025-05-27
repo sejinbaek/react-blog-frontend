@@ -1,5 +1,5 @@
 .postdetailpage {
-  padding: 2rem 0.25rem;
+  padding: 0 0.25rem 2rem;
 }
 
 .detailimg {
@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10rem 8rem;
+  padding: 8rem;
   position: relative;
   background-color: #eaeaea;
 }
@@ -19,13 +19,10 @@
   position: absolute;
 }
 
-.postdetailpage h3 {
-  padding: 1rem;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  font-weight: bold;
-  z-index: 1;
+.title {
+  padding: 2rem 0;
+  font-size: 1.75rem;
+  font-weight: normal;
 }
 
 .info {
@@ -34,7 +31,7 @@
   align-items: center;
   gap: 2rem;
   padding: 1rem 0;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .author {
@@ -52,6 +49,35 @@
   flex: 1;
 }
 
+.summary {
+  background-color: rgb(255, 233, 233);
+  padding: 1rem;
+  font-style: italic;
+}
+
+.content {
+  padding: 1rem 0;
+}
+
+.btns {
+  padding: 0.5rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #e3e3e3;
+}
+
+.btnsWrapper a,
+.btnsWrapper span {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+}
+
+.btnsWrapper a:hover,
+.btnsWrapper span:hover {
+  font-weight: bold;
+}
+
 .likeCommentWrapper {
   display: flex;
   gap: 1rem;
@@ -66,36 +92,4 @@
 
 .commentIcon {
   font-size: 16px;
-}
-
-.summary {
-  background-color: rgb(255, 233, 233);
-  padding: 1rem;
-  font-style: italic;
-}
-
-.content {
-  padding: 1rem;
-}
-
-.btns {
-  padding: 0.5rem 0;
-  display: flex;
-  gap: 0.25rem;
-  justify-content: flex-end;
-  border-top: 1px dotted #e3e3e3;
-  border-bottom: 1px dotted #e3e3e3;
-}
-
-.btns a,
-.btns span {
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btns a:hover,
-.btns span:hover {
-  font-weight: bold;
 }
