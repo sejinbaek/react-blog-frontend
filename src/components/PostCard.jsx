@@ -5,7 +5,7 @@ import { formatDate } from '../utils/features'
 import css from './postcard.module.css'
 import LikeButton from './LikeButton'
 
-import defaultImage from '../assets/NoImage.png'
+import defaultImage from '../assets/chihiro014.jpg'
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate()

@@ -10,7 +10,7 @@ import css from './postdetailpage.module.css'
 import LikeButton from '../components/LikeButton'
 import Comments from '../components/Comments'
 
-import defaultImage from '../assets/NoImage.png'
+import defaultImage from '../assets/chihiro014.jpg'
 
 export const PostDetailPage = () => {
   const username = useSelector(state => state.user.user.username)
