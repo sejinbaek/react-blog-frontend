@@ -10,7 +10,7 @@ import css from './postdetailpage.module.css'
 import LikeButton from '../components/LikeButton'
 import Comments from '../components/Comments'
 
-import defaultImage from '../assets/chihiro014.jpg'
+import defaultImage from '../assets/ponyo050.jpg'
 import UrlButton from '../components/UrlButton'
 
 export const PostDetailPage = () => {
