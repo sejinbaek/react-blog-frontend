@@ -41,11 +41,3 @@
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
-.errorMessage {
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 10px;
-  border-radius: 0.5em;
-  margin-bottom: 20px;
-}

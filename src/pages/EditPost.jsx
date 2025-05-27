@@ -5,6 +5,7 @@ import style from './createpost.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getPostDetail, updatePost } from '../apis/postApi'
+import { useToast } from '../hooks/useToast'
 
 export const EditPost = () => {
   const { postId } = useParams()
@@ -17,9 +18,10 @@ export const EditPost = () => {
   const [content, setContent] = useState('')
   const [currentImage, setCurrentImage] = useState(null)
 
-  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const { showErrorToast, showWarnToast } = useToast()
 
   // 사용자 정보가 없으면 로그인 페이지로 리디렉션
   useEffect(() => {
@@ -37,7 +39,6 @@ export const EditPost = () => {
 
         // 현재 사용자와 글 작성자가 다르면 접근 제한
         if (postData.author !== user?.username) {
-          setError('자신의 글만 수정할 수 있습니다')
           navigate('/')
           return
         }
@@ -53,7 +54,7 @@ export const EditPost = () => {
         }
       } catch (error) {
         console.error('글 정보 불러오기 실패:', error)
-        setError('글 정보를 불러오는 데 실패했습니다')
+        showErrorToast('글을 불러오는 데 실패했습니다')
       } finally {
         setIsLoading(false)
       }
@@ -73,13 +74,15 @@ export const EditPost = () => {
   const handleSubmit = async e => {
     e.preventDefault()
 
+    // 내용을 입력하지 않아도 수정되는 현상 해결
+    const stripHtml = html => html.replace(/<[^>]*>/g, '').trim()
+
     // 필수 필드 확인
-    if (!title || !summary || !content) {
-      setError('모든 필드를 입력해주세요')
+    if (!title || !summary || !stripHtml(content)) {
+      showWarnToast('모든 필드를 입력해주세요')
       return
     }
     setIsSubmitting(true)
-    setError('')
 
     try {
       // FormData 생성
@@ -100,7 +103,7 @@ export const EditPost = () => {
       navigate(`/post/${postId}`)
     } catch (error) {
       console.log('글 수정 실패:', error)
-      setError(error.response?.data.error || '글 수정에 실패했습니다')
+      showErrorToast('글 수정에 실패했습니다')
     } finally {
       setIsSubmitting(false)
     }
@@ -112,7 +115,6 @@ export const EditPost = () => {
 
   return (
     <main>
-      {error && <div className={css.errorMessage}>{error}</div>}
       <form className={css.writecon} onSubmit={handleSubmit}>
         <input
           type="text"

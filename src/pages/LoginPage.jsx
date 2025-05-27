@@ -19,7 +19,7 @@ export const LoginPage = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { showSuccessToast, showErrorToast } = useToast()
+  const { showErrorToast, showSuccessToast } = useToast()
 
   const validateUsername = value => {
     if (!value) {
@@ -70,11 +70,11 @@ export const LoginPage = () => {
       if (userData) {
         setLoginStatus('로그인 성공')
         dispatch(setUserInfo(userData))
-        showSuccessToast('SEHADANG에 오신 것을 환영합니다!')
+        showSuccessToast(`세하당에 오신 걸 환영합니다🤗`)
 
         setTimeout(() => {
           setRedirect(true)
-        }, 2000)
+        }, 1000)
       } else {
         showErrorToast('사용자가 존재하지 않습니다.')
         setLoginStatus('사용자가 없습니다')

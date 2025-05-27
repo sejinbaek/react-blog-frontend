@@ -4,17 +4,28 @@ import PostCard from '../components/PostCard'
 import { getPostList } from '../apis/postApi'
 
 import mainImage from '../assets/karigurashi021.jpg'
+import Loading from '../components/Loading'
+import { useToast } from '../hooks/useToast'
 
 export const PostListPage = () => {
   const [postList, setPostList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  // 토스트
+  const { showDefaultToast } = useToast()
+
   // 페이지네이션 상태 관리
   const [page, setPage] = useState(0)
   const [hasMore, setHasMore] = useState(true)
   const listRef = useRef(null)
   const observer = useRef()
+
+  useEffect(() => {
+    setTimeout(() => {
+      showDefaultToast('오늘의 기분을 글로 적어보는 건 어떤가요?')
+    }, 1000)
+  }, [])
 
   const lastPostElementRef = useCallback(
     node => {
@@ -63,7 +74,7 @@ export const PostListPage = () => {
       </div>
       {error && <p className={css.errorMessage}>{error}</p>}
       {isLoading ? (
-        <p>로딩중...</p>
+        <Loading />
       ) : postList?.length === 0 ? (
         <p className={css.noPostMessage}>첫 번째 글의 주인공이 되어주세요</p>
       ) : (

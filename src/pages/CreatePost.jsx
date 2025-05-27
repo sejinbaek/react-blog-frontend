@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { createPost } from '../apis/postApi'
+import { useToast } from '../hooks/useToast'
 
 export const CreatePost = () => {
   const navigate = useNavigate()
@@ -13,7 +14,8 @@ export const CreatePost = () => {
   const [files, setFiles] = useState([])
   const [content, setContent] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState('')
+
+  const { showWarnToast } = useToast()
 
   const user = useSelector(state => state.user.user)
   // 사용자 정보가 없으면 로그인 페이지로 리디렉션
@@ -31,11 +33,10 @@ export const CreatePost = () => {
     e.preventDefault()
 
     setIsSubmitting(true)
-    setError('')
 
     if (!title || !summary || !content) {
       setIsSubmitting(false)
-      setError('모든 필드를 입력해주세요')
+      showWarnToast('모든 필드를 입력해주세요')
       return
     }
 
@@ -58,13 +59,11 @@ export const CreatePost = () => {
       console.log(err)
     } finally {
       setIsSubmitting(false)
-      setError('')
     }
   }
 
   return (
     <main className={css.createpost}>
-      {error && <div className={css.error}>{error}</div>}
       <form className={css.writecon} onSubmit={handleCreatePost}>
         <input
           type="text"
