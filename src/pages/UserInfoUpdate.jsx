@@ -84,7 +84,7 @@ export const UserInfoUpdate = () => {
   }
 
   const handleCancel = () => {
-    navigate(`/user/${user.username}`)
+    navigate(-1)
   }
 
   if (!user) return null // 로그인 상태가 아니면 아무것도 렌더링하지 않음
