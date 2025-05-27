@@ -16,7 +16,12 @@ export const useToast = () => {
   const showErrorToast = (message, options = {}) => {
     toast.error(message, {
       position: 'top-center',
-      autoClose: 2000,
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
       theme: 'light',
       transition: Bounce,
     })
