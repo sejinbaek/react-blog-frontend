@@ -8,6 +8,7 @@
 .comments textarea {
   flex: 1;
   padding: 0.25rem;
+  border: 1px solid lightgray;
 }
 .comments form button {
   cursor: pointer;
