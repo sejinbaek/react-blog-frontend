@@ -72,20 +72,14 @@
 
 .gnb a {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   font-size: 1rem;
   color: #333;
 }
 
-.gnb a.active {
-  background-color: #aaaaaa;
-  border-radius: 30px;
-  color: white;
-}
-
 .gnb button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
 }
