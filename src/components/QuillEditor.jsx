@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
+import './QuillEditor.css'
 
 const QuillEditor = ({ value, onChange, placeholder }) => {
   const quillRef = useRef(null)

@@ -39,6 +39,11 @@ export const PostListPage = () => {
         // 수정된 페이지 정보 전달
         const data = await getPostList(page)
 
+        // 응답 안전성 검사
+        if (!data || !Array.isArray(data.posts)) {
+          throw new Error('유효하지 않은 응답 형식입니다.')
+        }
+
         setPostList(prev => (page === 0 ? data.posts : [...prev, ...data.posts]))
         setHasMore(data.hasMore)
       } catch (error) {
@@ -59,7 +64,7 @@ export const PostListPage = () => {
       {error && <p className={css.errorMessage}>{error}</p>}
       {isLoading ? (
         <p>로딩중...</p>
-      ) : postList.length === 0 ? (
+      ) : postList?.length === 0 ? (
         <p className={css.noPostMessage}>첫 번째 글의 주인공이 되어주세요</p>
       ) : (
         <ul className={css.postList} ref={listRef}>

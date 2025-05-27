@@ -64,19 +64,18 @@ export const CreatePost = () => {
 
   return (
     <main className={css.createpost}>
-      <h2>글쓰기</h2>
       {error && <div className={css.error}>{error}</div>}
       <form className={css.writecon} onSubmit={handleCreatePost}>
-        <label htmlFor="title">제목</label>
         <input
           type="text"
           id="title"
           name="title"
-          placeholder="제목을 입력해주세요"
+          placeholder="제목"
           value={title}
           onChange={e => setTitle(e.target.value)}
+          className={css.title}
         />
-        <label htmlFor="summary">요약내용</label>
+
         <input
           type="text"
           id="summary"
@@ -84,8 +83,8 @@ export const CreatePost = () => {
           placeholder="요약내용을 입력해주세요"
           value={summary}
           onChange={e => setSummary(e.target.value)}
+          className={css.summary}
         />
-        <label htmlFor="files">파일</label>
         <input
           type="file"
           id="files"
@@ -93,7 +92,6 @@ export const CreatePost = () => {
           accept="image/*"
           onChange={e => setFiles(e.target.files)}
         />
-        <label htmlFor="content">내용</label>
         <div className={css.editorWrapper}>
           <QuillEditor
             value={content}
@@ -101,10 +99,9 @@ export const CreatePost = () => {
             placeholder="내용을 입력해주세요"
           />
         </div>
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting} className={css.submitBtn}>
           {isSubmitting ? '등록중...' : '등록'}
         </button>
-        <div>test</div>
       </form>
     </main>
   )
