@@ -11,6 +11,7 @@ import LikeButton from '../components/LikeButton'
 import Comments from '../components/Comments'
 
 import defaultImage from '../assets/chihiro014.jpg'
+import UrlButton from '../components/UrlButton'
 
 export const PostDetailPage = () => {
   const username = useSelector(state => state.user.user.username)
@@ -67,6 +68,7 @@ export const PostDetailPage = () => {
         <div className={css.info}>
           <span className={css.author}>{postInfo?.author}</span>
           <p className={css.date}>{formatDate(postInfo?.updatedAt)}</p>
+          <UrlButton className={css.urlButton} />
         </div>
         <div className={css.summary}>{postInfo?.summary}</div>
         {/* Quill 에디터로 작성된 HTML 콘텐츠를 렌더링 */}
