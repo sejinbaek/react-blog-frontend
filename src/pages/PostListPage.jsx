@@ -22,9 +22,13 @@ export const PostListPage = () => {
   const observer = useRef()
 
   useEffect(() => {
-    setTimeout(() => {
-      showDefaultToast('오늘의 기분을 글로 적어보는 건 어떤가요?')
-    }, 1000)
+    const hasShownToast = localStorage.getItem('hasShownToast')
+    if (!hasShownToast) {
+      setTimeout(() => {
+        showDefaultToast('오늘의 기분을 글로 적어보는 건 어떤가요?')
+        localStorage.setItem('hasShownToast', 'true')
+      }, 1000)
+    }
   }, [])
 
   const lastPostElementRef = useCallback(
