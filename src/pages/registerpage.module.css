@@ -41,7 +41,7 @@
 .container button,
 .socialLogin button {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: clamp(0.75em, 2vw, 1.25em) clamp(1em, 3vw, 1.5em);
   background-color: #1a1a1a;
   color: #ffffff;
@@ -61,12 +61,6 @@
   text-decoration: underline;
   color: #ffffff;
   cursor: pointer;
-}
-
-.socialLoginTitle {
-  text-align: center;
-  font-size: clamp(12px, 4vw, 16px);
-  padding-bottom: 1rem;
 }
 
 .socialLogin button img {
