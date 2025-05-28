@@ -15,6 +15,7 @@ export const DefaultLayout = () => {
     <>
       {!shouldHideHeader && <Header />}{' '}
       <div className={css.defaultlayout}>
+        <TokenChecker />
         <Outlet />
         <ToastContainer limit={1} />
       </div>
