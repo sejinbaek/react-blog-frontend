@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getPostDetail, updatePost } from '../apis/postApi'
 import { useToast } from '../hooks/useToast'
+import Loading from '../components/Loading'
 
 export const EditPost = () => {
   const { postId } = useParams()
@@ -110,7 +111,7 @@ export const EditPost = () => {
   }
 
   if (isLoading) {
-    return <div className={css.loading}>글 정보를 불러오는 중...</div>
+    return <Loading />
   }
 
   return (

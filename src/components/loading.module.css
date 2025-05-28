@@ -1,0 +1,29 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateY(-5px);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+}
+
+.loading img {
+  width: 100px;
+  height: auto;
+  animation: shimmer 1.5s infinite ease-in-out;
+}

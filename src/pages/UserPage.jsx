@@ -10,6 +10,7 @@ import { formatDate } from '../utils/features'
 import { useToast } from '../hooks/useToast'
 
 import NoImage from '../assets/NoImage.png'
+import Loading from '../components/Loading'
 
 export const UserPage = () => {
   const { username } = useParams()
@@ -76,7 +77,7 @@ export const UserPage = () => {
     }
   }
 
-  if (isLoading) return <div>로딩 중...</div>
+  if (isLoading) return <Loading />
   if (error) return <div>{error}</div>
   if (!userData) return <div>사용자를 찾을 수 없습니다.</div>
 

@@ -12,6 +12,7 @@ import Comments from '../components/Comments'
 
 import defaultImage from '../assets/ponyo050.jpg'
 import UrlButton from '../components/UrlButton'
+import Loading from '../components/Loading'
 
 export const PostDetailPage = () => {
   const username = useSelector(state => state.user.user.username)
@@ -52,6 +53,8 @@ export const PostDetailPage = () => {
       }
     }
   }
+
+  if (!postInfo) return <Loading />
 
   return (
     <main className={css.postdetailpage}>
