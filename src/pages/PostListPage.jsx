@@ -27,7 +27,7 @@ export const PostListPage = () => {
       showDefaultToast('⭐ 오늘의 기분을 글로 적어보는 건 어떤가요?')
     }, 1000)
     return () => clearTimeout(timer)
-  }, [showDefaultToast])
+  }, [])
 
   // 무한 스크롤 Intersection Observer
   const lastPostElementRef = useCallback(
