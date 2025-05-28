@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from '../components/Header'
+import { TokenChecker } from './TokenChecker'
 import './index.css'
 import css from './defaultlayout.module.css'
 
