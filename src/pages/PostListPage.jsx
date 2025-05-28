@@ -1,60 +1,63 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { getPostList } from '../apis/postApi'
+import { useToast } from '../hooks/useToast'
 import css from './postlistpage.module.css'
 import PostCard from '../components/PostCard'
-import { getPostList } from '../apis/postApi'
-
-import mainImage from '../assets/karigurashi021.jpg'
 import Loading from '../components/Loading'
-import { useToast } from '../hooks/useToast'
+import mainImage from '../assets/karigurashi021.jpg'
 
 export const PostListPage = () => {
   const [postList, setPostList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [initialLoading, setInitialLoading] = useState(true) // 초기 로딩용
+  const [loadingMore, setLoadingMore] = useState(false) // 추가 로딩용
   const [error, setError] = useState(null)
 
-  // 토스트
-  const { showDefaultToast } = useToast()
-
-  // 페이지네이션 상태 관리
+  // 페이지네이션 상태 처리
   const [page, setPage] = useState(0)
   const [hasMore, setHasMore] = useState(true)
+
   const listRef = useRef(null)
   const observer = useRef()
 
-  useEffect(() => {
-    const hasShownToast = localStorage.getItem('hasShownToast')
-    if (!hasShownToast) {
-      setTimeout(() => {
-        showDefaultToast('오늘의 기분을 글로 적어보는 건 어떤가요?')
-        localStorage.setItem('hasShownToast', 'true')
-      }, 1000)
-    }
-  }, [])
+  const { showDefaultToast } = useToast()
 
+  // 토스트는 최초 마운트 때만 실행
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      showDefaultToast('⭐ 오늘의 기분을 글로 적어보는 건 어떤가요?')
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [showDefaultToast])
+
+  // 무한 스크롤 Intersection Observer
   const lastPostElementRef = useCallback(
     node => {
-      if (isLoading || !node) return
+      if (loadingMore || initialLoading || !node) return
       if (observer.current) observer.current.disconnect()
 
-      observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && hasMore) {
-          setPage(prev => prev + 1)
+      observer.current = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting && hasMore) {
+            setTimeout(() => setPage(prev => prev + 1), 200) // 트리거 지연
+          }
+        },
+        {
+          threshold: 1.0, // 완전히 보여야 실행되도록
         }
-      })
+      )
       observer.current.observe(node)
     },
-    [isLoading, hasMore]
+    [loadingMore, initialLoading, hasMore]
   )
 
+  // 게시글 리스트 가져오기
   useEffect(() => {
     const fetchPostList = async () => {
       try {
-        // 페이지가 0보다 크면 추가 데이터 로딩
-        if (page > 0) setIsLoading(true)
-        // 수정된 페이지 정보 전달
-        const data = await getPostList(page)
+        page === 0 ? setInitialLoading(true) : setLoadingMore(true)
 
-        // 응답 안전성 검사
+        const data = await getPostList(page, 6)
+
         if (!data || !Array.isArray(data.posts)) {
           throw new Error('유효하지 않은 응답 형식입니다.')
         }
@@ -62,12 +65,14 @@ export const PostListPage = () => {
         setPostList(prev => (page === 0 ? data.posts : [...prev, ...data.posts]))
         setHasMore(data.hasMore)
       } catch (error) {
-        console.error('목록조회 실패:', error)
+        console.error('목록 조회 실패:', error)
         setError('글 목록을 불러오는데 실패했습니다.')
       } finally {
-        setIsLoading(false)
+        setInitialLoading(false)
+        setLoadingMore(false)
       }
     }
+
     fetchPostList()
   }, [page])
 
@@ -76,19 +81,24 @@ export const PostListPage = () => {
       <div className={css.postlist_img}>
         <img src={mainImage} alt="메인이미지" />
       </div>
+
       {error && <p className={css.errorMessage}>{error}</p>}
-      {isLoading ? (
+
+      {initialLoading ? (
         <Loading />
       ) : postList?.length === 0 ? (
         <p className={css.noPostMessage}>첫 번째 글의 주인공이 되어주세요</p>
       ) : (
-        <ul className={css.postList} ref={listRef}>
-          {postList.map((post, i) => (
-            <li key={post._id} ref={i === postList.length - 1 ? lastPostElementRef : null}>
-              <PostCard post={post} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className={css.postList} ref={listRef}>
+            {postList.map((post, i) => (
+              <li key={post._id} ref={i === postList.length - 1 ? lastPostElementRef : null}>
+                <PostCard post={post} />
+              </li>
+            ))}
+          </ul>
+          {loadingMore && <div className={css.loadingMore}>📦 더 불러오는 중...</div>}
+        </>
       )}
     </main>
   )
