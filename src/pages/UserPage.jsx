@@ -86,7 +86,7 @@ export const UserPage = () => {
       <section>
         <div className={css.userInfo}>
           <h2>
-            <span>반가워요</span>
+            <span>반가워요,</span>
             <br />
             {username}님!
           </h2>
