@@ -26,6 +26,9 @@ export const TokenChecker = () => {
           // 보호된 경로에 있다면 홈으로 리다이렉트
           if (isProtectedPath) {
             navigate('/')
+          } else {
+            // 로그인 성공 시 상태 반영
+            dispatch(setUserInfo(userData))
           }
         }
       } catch (err) {
