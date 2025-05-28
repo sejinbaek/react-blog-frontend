@@ -100,7 +100,7 @@
 .postCard .title {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #1a1a1a;
 
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -121,6 +121,10 @@
   background-color: #ffffff;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.commentCard p {
+  color: #1a1a1a;
 }
 
 .userpage img {
