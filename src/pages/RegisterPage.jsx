@@ -121,16 +121,16 @@ export const RegisterPage = () => {
         <strong>{errPasswordOk}</strong>
         <button type="submit">가입하기</button>
       </form>
-      {/* 소셜 로그인 섹션 추가 */}
-      <div className={css.socialLogin}>
-        <KakaoLoginButton />
-      </div>
       <p className={css.loginLink}>
         이미 계정이 있으신가요?
         <Link to="/login" className={css.linkButton}>
           로그인
         </Link>
       </p>
+      {/* 소셜 로그인 섹션 추가 */}
+      <div className={css.socialLogin}>
+        <KakaoLoginButton />
+      </div>
     </main>
   )
 }
