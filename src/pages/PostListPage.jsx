@@ -5,6 +5,7 @@ import css from './postlistpage.module.css'
 import PostCard from '../components/PostCard'
 import Loading from '../components/Loading'
 import mainImage from '../assets/karigurashi021.jpg'
+import PostCardSkeleton from '../components/PostCardSkeleton'
 
 export const PostListPage = () => {
   const [postList, setPostList] = useState([])
@@ -38,7 +39,7 @@ export const PostListPage = () => {
       observer.current = new IntersectionObserver(
         entries => {
           if (entries[0].isIntersecting && hasMore) {
-            setTimeout(() => setPage(prev => prev + 1), 200) // 트리거 지연
+            setTimeout(() => setPage(prev => prev + 1), 150) // 트리거 지연
           }
         },
         {
@@ -81,11 +82,15 @@ export const PostListPage = () => {
       <div className={css.postlist_img}>
         <img src={mainImage} alt="메인이미지" />
       </div>
-
       {error && <p className={css.errorMessage}>{error}</p>}
-
       {initialLoading ? (
-        <Loading />
+        <ul className={css.postList}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <li key={i}>
+              <PostCardSkeleton />
+            </li>
+          ))}
+        </ul>
       ) : postList?.length === 0 ? (
         <p className={css.noPostMessage}>첫 번째 글의 주인공이 되어주세요</p>
       ) : (
