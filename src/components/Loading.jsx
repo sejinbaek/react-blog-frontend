@@ -7,7 +7,6 @@ const Loading = () => {
       <div>
         <img src={loadingImage} alt="로딩 이미지" />
       </div>
-
       <p>LOADING...♥️</p>
     </div>
   )
