@@ -25,6 +25,11 @@
   padding: 1.5rem 0;
 }
 
+.userpage p {
+  color: gray;
+  padding: 0.75rem 0;
+}
+
 .userInfo {
   background-color: #f5f5f5;
   padding: 1rem;
