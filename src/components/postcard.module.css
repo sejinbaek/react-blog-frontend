@@ -1,5 +1,4 @@
 .postcard {
-  border-bottom: 1px dotted #e3e3e3;
   cursor: pointer;
   overflow: hidden;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -29,7 +28,7 @@
   padding: 1rem;
   font-size: 1.2rem;
   line-height: 2rem;
-  color: #222222;
+  color: #1a1a1a;
   /* 넘치는 텍스트 ... 처리 시 아래 3개는 필수 */
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -45,7 +44,7 @@
 }
 
 .author {
-  color: black;
+  color: #1a1a1a;
 }
 
 .author:hover {
@@ -76,7 +75,7 @@
   padding: 0 1rem;
   font-size: 0.8rem;
   line-height: 1.25rem;
-  color: #000;
+  color: #1a1a1a;
   white-space: normal;
   line-clamp: 3;
   display: -webkit-box;

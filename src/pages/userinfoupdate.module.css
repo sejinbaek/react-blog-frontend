@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -10,7 +10,7 @@
 .userinfoupdate h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #333;
+  color: #1a1a1a;
 }
 
 .updateForm {
@@ -27,20 +27,20 @@
 
 .formGroup label {
   font-weight: 600;
-  color: #444;
+  color: #1a1a1a;
 }
 
 .input,
 .disabledInput {
   padding: 0.8rem;
-  border: 1px solid #ddd;
+  border: 1px solid #eaeaea;
   border-radius: 4px;
   font-size: 1rem;
 }
 
 .disabledInput {
-  background-color: #f9f9f9;
-  color: #777;
+  background-color: #ffffff;
+  color: #7c7c7c;
   cursor: not-allowed;
 }
 
@@ -52,7 +52,7 @@
 
 .errorMessage {
   color: #d32f2f;
-  background-color: #ffebee;
+  background-color: #ffffff;
   padding: 0.8rem;
   border-radius: 4px;
   margin-bottom: 1rem;
@@ -61,7 +61,7 @@
 
 .successMessage {
   color: #388e3c;
-  background-color: #e8f5e9;
+  background-color: #ffffff;
   padding: 0.8rem;
   border-radius: 4px;
   margin-bottom: 1rem;
@@ -86,8 +86,8 @@
 }
 
 .cancelButton {
-  background-color: #f5f5f5;
-  color: #555;
+  background-color: #eaeaea;
+  color: #7c7c7c;
 }
 
 .cancelButton:hover {

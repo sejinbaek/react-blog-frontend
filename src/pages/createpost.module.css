@@ -7,7 +7,7 @@
 
 .title {
   border: none;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #eaeaea;
   font-size: 2rem;
   text-align: center;
   padding: 1rem 0;
@@ -32,9 +32,9 @@
   margin: 0 auto;
   width: fit-content;
   font-size: 1.25rem;
-  padding: 0.75rem 5rem;
-  background-color: black;
-  color: white;
-  border-radius: 2rem;
+  padding: 1rem 7rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 3rem;
   margin-bottom: 3rem;
 }

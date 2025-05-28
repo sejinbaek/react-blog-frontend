@@ -38,6 +38,6 @@
 }
 
 .writecon button[type='submit']:disabled {
-  background-color: #cccccc;
+  background-color: #eaeaea;
   cursor: not-allowed;
 }

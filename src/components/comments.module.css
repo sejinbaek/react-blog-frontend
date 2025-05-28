@@ -8,7 +8,7 @@
 .comments textarea {
   flex: 1;
   padding: 0.25rem;
-  border: 1px solid lightgray;
+  border: 1px solid #999;
   resize: none;
 }
 
@@ -25,7 +25,7 @@
 
 .commentsList .list {
   padding: 0.5rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .commentsList li:last-child {
@@ -41,7 +41,7 @@
 }
 
 .author {
-  color: black;
+  color: #1a1a1a;
   cursor: pointer;
   padding-right: 0.5rem;
 }
@@ -54,7 +54,7 @@
 .text {
   width: 100%;
   padding-top: 0.5rem;
-  color: gray;
+  color: #7c7c7c;
   word-break: break-word;
   white-space: normal;
   overflow-wrap: break-word;
