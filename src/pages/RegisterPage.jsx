@@ -3,6 +3,7 @@ import css from './registerpage.module.css'
 import { useState } from 'react'
 import { registerUser } from '../apis/userApi'
 import { useToast } from '../hooks/useToast.js'
+import KakaoLoginButton from '../components/KakaoLoginButton.jsx'
 
 export const RegisterPage = () => {
   const [username, setUserName] = useState('')
@@ -120,6 +121,11 @@ export const RegisterPage = () => {
         <strong>{errPasswordOk}</strong>
         <button type="submit">가입하기</button>
       </form>
+      {/* 소셜 로그인 섹션 추가 */}
+      <div className={css.socialLogin}>
+        <p className={css.socialLoginTitle}>간편 로그인</p>
+        <KakaoLoginButton />
+      </div>
       <p className={css.loginLink}>
         이미 계정이 있으신가요?
         <Link to="/login" className={css.linkButton}>

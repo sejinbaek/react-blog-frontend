@@ -38,7 +38,8 @@
   padding: 0.1em 0.5em 1em;
 }
 
-.container button {
+.container button,
+.socialLogin button {
   width: 100%;
   margin-bottom: 30px;
   padding: clamp(0.75em, 2vw, 1.25em) clamp(1em, 3vw, 1.5em);
@@ -50,7 +51,7 @@
 }
 
 .loginLink {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: clamp(12px, 4vw, 16px);
   text-align: center;
 }
@@ -60,4 +61,17 @@
   text-decoration: underline;
   color: white;
   cursor: pointer;
+}
+
+.socialLoginTitle {
+  text-align: center;
+  font-size: clamp(12px, 4vw, 16px);
+  padding-bottom: 1rem;
+}
+
+.socialLogin button img {
+  width: 100%;
+  padding: 0 1rem;
+  height: auto;
+  object-fit: contain;
 }

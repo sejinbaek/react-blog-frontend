@@ -7,6 +7,7 @@ import { loginUser } from '../apis/userApi'
 import { setUserInfo } from '../store/userSlice'
 
 import { useToast } from '../hooks/useToast.js'
+import KakaoLoginButton from '../components/KakaoLoginButton.jsx'
 
 export const LoginPage = () => {
   const [username, setUsername] = useState('')
@@ -124,6 +125,11 @@ export const LoginPage = () => {
         <strong>{errPassword}</strong>
         <button type="submit">로그인</button>
       </form>
+      {/* 소셜 로그인 섹션 추가 */}
+      <div className={css.socialLogin}>
+        <p className={css.socialLoginTitle}>간편 로그인</p>
+        <KakaoLoginButton />
+      </div>
       <p className={css.loginLink}>
         계정이 없으신가요?
         <Link to="/register" className={css.linkButton}>
