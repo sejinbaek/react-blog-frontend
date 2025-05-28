@@ -6,9 +6,9 @@ export const useToast = () => {
 
   const showSuccessToast = (message, options = {}) => {
     if (isMobile) return
-    toast(message, {
+    toast.success(message, {
       position: 'top-center',
-      autoClose: 1500,
+      autoClose: 1000,
       hideProgressBar: true,
       closeOnClick: true,
       draggable: true,
