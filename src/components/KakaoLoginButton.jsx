@@ -1,5 +1,5 @@
 import kakaoLoginBtn from '../assets/kakao_login_medium_narrow.png' // 카카오 로그인 버튼 이미지
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_BACK_URL
 const KakaoLoginButton = () => {
   const handleKakaoLogin = () => {
     window.location.href = `${API_URL}/auth/kakao/login`
