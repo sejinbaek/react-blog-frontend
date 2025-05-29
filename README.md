@@ -1,17 +1,16 @@
 # 📝 SEHADANG 블로그
-
 세하당에 오신 것을 환영합니다✨🤗
 - 배포 사이트: https://react-blog-frontend-ev4g.vercel.app/
 
 
 ## 📌 프로젝트 소개
-
 - *지브리 애니메이션의 감성과 디자인에서 영감을 받아 만든 개인 블로그 플랫폼입니다.*
 - *사용자들이 마치 지브리 세계 속에서 글을 쓰고 여행하듯, 사용자 자신만의 이야기를 마치 애니메이션 한 장면처럼 남길 수 있습니다.*
 
-##  📹 시연 영상
 
+##  📹 시연 영상
 https://github.com/user-attachments/assets/60677078-7762-4afd-9955-578012523360
+
 
 ## ✨ 주요 기능
 - ✅ 사용자 로그인 / 회원가입 (카카오 로그인 포함)
@@ -33,7 +32,7 @@ https://github.com/user-attachments/assets/60677078-7762-4afd-9955-578012523360
 ### ☁️ DevOps
 <p><img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white" /> <img src="https://img.shields.io/badge/CloudType-3C9DD0?style=flat&logoColor=white" /></p>
 
----
+
 
 ## 📁폴더구조
 ```
@@ -49,6 +48,7 @@ src/
 ├── utils/        # 유틸리티 함수 모음
 └── main.jsx      # 애플리케이션 진입점
 ```
+
 
 ## 📌 개선하고 싶은 사항
 - 다크모드 지원
