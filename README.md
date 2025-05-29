@@ -1,15 +1,13 @@
-# 📝 SEHADANG 블로그
+# 📝 SEHADANG
+
 세하당에 오신 것을 환영합니다✨🤗
 - 배포 사이트: https://react-blog-frontend-ev4g.vercel.app/
 
 
 ## 📌 프로젝트 소개
+
 - *지브리 애니메이션의 감성과 디자인에서 영감을 받아 만든 개인 블로그 플랫폼입니다.*
 - *사용자들이 마치 지브리 세계 속에서 글을 쓰고 여행하듯, 사용자 자신만의 이야기를 마치 애니메이션 한 장면처럼 남길 수 있습니다.*
-
-
-##  📹 시연 영상
-https://github.com/user-attachments/assets/60677078-7762-4afd-9955-578012523360
 
 
 ## ✨ 주요 기능
@@ -19,6 +17,30 @@ https://github.com/user-attachments/assets/60677078-7762-4afd-9955-578012523360
 - ✅ 댓글 및 좋아요 기능
 - ✅ 마이페이지에서 글 관리
 - ✅ 사용자 비밀번호 변경
+
+## 💡 Kick Point
+- 🎨 지브리 감성 UI
+지브리 애니메이션에서 영감을 받아 부드러운 색감, 따뜻한 여백, 손글씨 느낌의 폰트를 적용해 감성적인 사용자 경험을 구현했습니다.
+
+- ✍️ 마크다운 에디터 커스터마이징
+React-Quill 기반으로 블로그 글 작성에 최적화된 에디터를 구성하고, 직관적인 툴바와 반응형 UI를 적용했습니다.
+
+- 🔐 JWT 기반 사용자 인증
+로그인 시 Access/Refresh Token을 활용한 사용자 인증 및 토큰 재발급 로직을 직접 구현했습니다.
+
+- ⚛️ SPA 기반 클라이언트 구조
+React Router를 활용한 단일 페이지 앱(SPA) 구조로 페이지 전환이 빠르고 부드럽습니다.
+상태 관리는 Redux Toolkit, 서버 통신은 Axios로 구성하였습니다.
+
+- ⌛ 로딩 스켈레톤 UI 적용
+게시글 리스트 페이지에 스켈레톤 UI를 적용하여 콘텐츠 로딩 중에도 부드러운 사용자 경험을 제공합니다.
+사용자는 빈 화면 대신 뼈대 형태의 레이아웃을 보며 기다릴 수 있습니다.
+
+- 🔔 React-Toastify를 활용한 알림 시스템
+사용자 피드백을 명확하게 전달하기 위해 react-toastify로 성공/실패 알림, 로그인/글쓰기 완료 등 다양한 상황에 실시간 피드백을 제공합니다.
+
+- 📱 반응형 웹 디자인
+데스크탑과 모바일 환경 모두에 최적화된 레이아웃을 구성하여 다양한 기기에서 편리하게 사용할 수 있습니다.
 
 
 ## 🛠 기술 스택
@@ -32,7 +54,7 @@ https://github.com/user-attachments/assets/60677078-7762-4afd-9955-578012523360
 ### ☁️ DevOps
 <p><img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white" /> <img src="https://img.shields.io/badge/CloudType-3C9DD0?style=flat&logoColor=white" /></p>
 
-
+---
 
 ## 📁폴더구조
 ```
@@ -48,7 +70,6 @@ src/
 ├── utils/        # 유틸리티 함수 모음
 └── main.jsx      # 애플리케이션 진입점
 ```
-
 
 ## 📌 개선하고 싶은 사항
 - 다크모드 지원
