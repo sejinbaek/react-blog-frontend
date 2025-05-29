@@ -66,6 +66,16 @@ export const PostDetailPage = () => {
             }
             alt="포스트이미지"
           />
+          <img
+            src={
+              postInfo?.cover
+                ? postInfo.cover.startsWith('https')
+                  ? postInfo.cover
+                  : `${import.meta.env.VITE_BACK_URL}/${postInfo.cover}`
+                : defaultImage
+            }
+            alt="포스트이미지"
+          />
         </div>
         <h3 className={css.title}>{postInfo?.title}</h3>
         <div className={css.info}>
