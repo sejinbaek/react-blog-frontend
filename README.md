@@ -49,12 +49,11 @@ React Router를 활용한 단일 페이지 앱(SPA) 구조로 페이지 전환�
 <p> <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/React_Router_Dom-CA4245?style=flat&logo=react-router&logoColor=white" /> <img src="https://img.shields.io/badge/React_Icons-ECECEC?style=flat&logo=react&logoColor=black" /> <img src="https://img.shields.io/badge/React_Quill-ffffff?style=flat&logo=quill&logoColor=black" /> <img src="https://img.shields.io/badge/React_Toastify-363636?style=flat&logo=react&logoColor=FFD580" /> <img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=redux&logoColor=white" /> <img src="https://img.shields.io/badge/Redux_Toolkit-FFCA28?style=flat&logo=redux&logoColor=black" /> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white" /> </p>
 
 ### 🧠 Backend
-<p> <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" /> </p>
+<p> <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white" /> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" /> <img src="https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongodb&logoColor=white" /> <img src="https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=nodemon&logoColor=white" /> <img src="https://img.shields.io/badge/CORS-004B8D?style=flat&logo=fetch&logoColor=white" /> <img src="https://img.shields.io/badge/Dotenv-8EBC00?style=flat&logo=envato&logoColor=white" /> <img src="https://img.shields.io/badge/BcryptJS-003B57?style=flat&logo=auth0&logoColor=white" /> <img src="https://img.shields.io/badge/JSONWebToken-000000?style=flat&logo=jsonwebtokens&logoColor=white" /> <img src="https://img.shields.io/badge/Cookie--Parser-845EC2?style=flat&logo=cookiecutter&logoColor=white" /> <img src="https://img.shields.io/badge/Multer-E91E63?style=flat&logo=upload&logoColor=white" /> <img src="https://img.shields.io/badge/date--fns-FF6F61?style=flat&logo=calendar&logoColor=white" /> </p>
 
 ### ☁️ DevOps
 <p><img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white" /> <img src="https://img.shields.io/badge/CloudType-3C9DD0?style=flat&logoColor=white" /></p>
 
----
 
 ## 📁폴더구조
 ```
